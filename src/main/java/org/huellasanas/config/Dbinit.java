@@ -36,19 +36,21 @@ public class Dbinit {
                     especialidad TEXT
                 );
             """);
-
             stmt.execute("""
-                CREATE TABLE IF NOT EXISTS cita (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    fecha TEXT NOT NULL,
-                    hora TEXT NOT NULL,
-                    mascota_id INTEGER,
-                    veterinario_id TEXT,
-                    motivo TEXT,
-                    FOREIGN KEY (mascota_id) REFERENCES mascotas(id),
-                    FOREIGN KEY (veterinario_id) REFERENCES veterinario(id)
-                );
-            """);
+    CREATE TABLE IF NOT EXISTS cita (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        fecha TEXT NOT NULL,
+        hora TEXT NOT NULL,
+        mascota_id INTEGER NOT NULL,
+        veterinario_id TEXT NOT NULL,
+        motivo TEXT,
+
+        FOREIGN KEY (mascota_id) REFERENCES mascotas(id),
+        FOREIGN KEY (veterinario_id) REFERENCES veterinario(id),
+
+        UNIQUE (fecha, hora, veterinario_id)
+    );
+""");
 
             System.out.println("Tablas creadas correctamente");
 
