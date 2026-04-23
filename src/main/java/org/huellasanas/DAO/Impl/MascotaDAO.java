@@ -1,6 +1,7 @@
 package org.huellasanas.DAO.Impl;
 
 import org.huellasanas.DAO.GenericDAO;
+import org.huellasanas.models.Mascota;
 
 
 import java.sql.PreparedStatement;
@@ -9,81 +10,71 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
-public class MascotaDAO<Mascota > extends GenericDAO {
+public class MascotaDAO extends GenericDAO<Mascota, Integer> {
+
     @Override
-    protected Object mapToEntity(ResultSet rs) throws SQLException {
-        return null;
+    protected Mascota mapToEntity(ResultSet rs) throws SQLException {
+        return new Mascota(
+                rs.getInt("id"),
+                rs.getString("nombre"),
+                rs.getString("genero"),
+                rs.getString("tipo"),
+                rs.getString("clienteId"));
     }
+
 
     @Override
     protected String getInsertQuery() {
-        return "";
+        return "INSERT INTO mascotas (nombre, genero, tipo, clienteId) VALUES (?, ?, ?, ?)";
     }
 
     @Override
     protected String getUpdateQuery() {
-        return "";
+        return "UPDATE mascotas SET nombre = ?, genero = ?, tipo = ?, clienteId = ? WHERE id = ?";
     }
 
     @Override
     protected String getDeleteQuery() {
-        return "";
+        return "DELETE * FROM mascotas WHERE id = ?";
     }
 
     @Override
     protected String getFindByIdQuery() {
-        return "";
+        return "SELECT * FROM mascotas WHERE id = ? ";
     }
 
     @Override
     protected String getFindAllQuery() {
-        return "";
+        return "SELECT * FROM mascotas";
     }
 
     @Override
-    protected void setInsertParams(PreparedStatement ps, Object ent) throws SQLException {
-
-    }
-
-    @Override
-    protected void setUpdateParams(PreparedStatement ps, Object ent) throws SQLException {
-
-    }
-
-
-    @Override
-    protected void setDeleteParams(PreparedStatement ps, Object o) throws SQLException {
-
-    }
-
-
-    @Override
-    protected void setFindByIdParams(PreparedStatement ps, Object o) throws SQLException {
+    protected void setDeleteParams(PreparedStatement ps, Integer id) throws SQLException {
+        ps.setString(1, id.toString());
 
     }
 
     @Override
-    public boolean save(Object entidad) {
-        return false;
+    protected void setFindByIdParams(PreparedStatement ps, Integer id) throws SQLException {
+        ps.setString(1, id.toString());
     }
 
     @Override
-    public boolean update(Object entidad) {
-        return false;
+    protected void setUpdateParams(PreparedStatement ps, Mascota ent) throws SQLException {
+     ps.setInt(1, ent.getId());
+     ps.setString(2, ent.getNombre());
+     ps.setString(3, ent.getGenero());
+     ps.setString(4, ent.getTipo());
+     ps.setString(5, ent.getClienteId());
     }
 
     @Override
-    public boolean delete(Object entidad) {
-        return false;
-    }
+    protected void setInsertParams(PreparedStatement ps, Mascota ent) throws SQLException {
+        ps.setInt(1, ent.getId());
+        ps.setString(2, ent.getNombre());
+        ps.setString(3, ent.getGenero());
+        ps.setString(4, ent.getTipo());
+        ps.setString(5, ent.getClienteId());
 
-    @Override
-    public Optional findById(Object o) {
-        return Optional.empty();
-    }
-
-    @Override
-    public List findAll() {
-        return List.of();
     }
 }

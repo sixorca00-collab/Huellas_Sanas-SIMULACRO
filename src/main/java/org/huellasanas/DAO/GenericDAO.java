@@ -32,7 +32,7 @@ public abstract class GenericDAO<E, ID> implements PatronDAO<E, ID> {
     protected abstract void setDeleteParams(PreparedStatement ps, ID id) throws SQLException;
     protected abstract void setFindByIdParams(PreparedStatement ps, ID id) throws SQLException;
 
-
+//Aca toda la ejecución- por eso va en GenericDAO
     @Override
     public boolean save(E ent) {
         try (Connection conn = getConnection();

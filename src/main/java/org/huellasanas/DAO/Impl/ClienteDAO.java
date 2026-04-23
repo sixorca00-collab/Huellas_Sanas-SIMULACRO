@@ -18,27 +18,27 @@ public class ClienteDAO extends GenericDAO<Cliente, String> {
 
     @Override
     protected String getInsertQuery() {
-        return "INSERT INTO clientes (id, nombre, telefono) VALUES (?, ?, ?)";
+        return "INSERT INTO cliente (id, nombre, telefono) VALUES (?, ?, ?)";
     }
 
     @Override
     protected String getUpdateQuery() {
-        return "UPDATE clientes SET nombre = ?, telefono = ? WHERE id = ?";
+        return "UPDATE cliente SET nombre = ?, telefono = ? WHERE id = ?";
     }
 
     @Override
     protected String getDeleteQuery() {
-        return "DELETE FROM clientes WHERE id = ?";
+        return "DELETE FROM cliente WHERE id = ?";
     }
 
     @Override
     protected String getFindByIdQuery() {
-        return "SELECT * FROM clientes WHERE id = ?";
+        return "SELECT * FROM cliente WHERE id = ?";
     }
 
     @Override
     protected String getFindAllQuery() {
-        return "SELECT * FROM clientes";
+        return "SELECT * FROM cliente";
     }
 
     @Override
