@@ -5,6 +5,7 @@ import org.huellasanas.models.Mascota;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class MascotaService {
     private final MascotaDAO mDao= new MascotaDAO();
@@ -32,6 +33,11 @@ public class MascotaService {
     //Eliminar mascota
     public boolean eliminarMascota(int id){
         return mDao.delete(id);
+    }
+
+    //Mascotas por cliente
+    public List<Mascota> listarMascotasPorCliente(String clienteId){
+        return mDao.findAll().stream().filter(m -> m.getClienteId().equals(clienteId)).collect(Collectors.toList());
     }
     }
 
