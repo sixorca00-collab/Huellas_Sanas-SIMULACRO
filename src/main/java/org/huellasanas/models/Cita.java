@@ -1,26 +1,27 @@
 package org.huellasanas.models;
 
+import java.time.LocalDateTime;
+
 public class Cita {
 
     private int id;
-    private String fecha;
-    private String hora;
+    private LocalDateTime fechaHora;
     private int mascotaId;
     private String veterinarioId;
     private String motivo;
 
-    public Cita(int id, String fecha, String hora, int mascotaId, String veterinarioId, String motivo) {
+    // Constructor completo
+    public Cita(int id, LocalDateTime fechaHora, int mascotaId, String veterinarioId, String motivo) {
         this.id = id;
-        this.fecha = fecha;
-        this.hora = hora;
+        this.fechaHora = fechaHora;
         this.mascotaId = mascotaId;
         this.veterinarioId = veterinarioId;
         this.motivo = motivo;
     }
 
-    public Cita(String fecha, String hora, int mascotaId, String veterinarioId, String motivo) {
-        this.fecha = fecha;
-        this.hora = hora;
+    // Constructor sin ID (para inserts)
+    public Cita(LocalDateTime fechaHora, int mascotaId, String veterinarioId, String motivo) {
+        this.fechaHora = fechaHora;
         this.mascotaId = mascotaId;
         this.veterinarioId = veterinarioId;
         this.motivo = motivo;
@@ -32,12 +33,8 @@ public class Cita {
         return id;
     }
 
-    public String getFecha() {
-        return fecha;
-    }
-
-    public String getHora() {
-        return hora;
+    public LocalDateTime getFechaHora() {
+        return fechaHora;
     }
 
     public int getMascotaId() {
@@ -58,12 +55,8 @@ public class Cita {
         this.id = id;
     }
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
-
-    public void setHora(String hora) {
-        this.hora = hora;
+    public void setFechaHora(LocalDateTime fechaHora) {
+        this.fechaHora = fechaHora;
     }
 
     public void setMascotaId(int mascotaId) {
