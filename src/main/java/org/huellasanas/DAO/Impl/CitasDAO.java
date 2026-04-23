@@ -1,8 +1,6 @@
 package org.huellasanas.DAO.Impl;
-
 import org.huellasanas.DAO.GenericDAO;
 import org.huellasanas.models.Cita;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
