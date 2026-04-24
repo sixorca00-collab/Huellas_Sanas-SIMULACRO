@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="15" prefWidth="300" prefHeight="250" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.huellasanas.ui.controllers.LoginController">
+    <Label text="Bienvenido a Huellas Sanas" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+    <TextField fx:id="txtId" promptText="Ingrese su ID (Cédula)" maxWidth="200"/>
+    <ComboBox fx:id="cmbRol" promptText="Seleccione su Rol" maxWidth="200"/>
+    <Button text="Ingresar" onAction="#handleLogin" prefWidth="200"/>
+    <Button text="Registrarse" onAction="#handleRegister" prefWidth="200" style="-fx-background-color: #ddd;"/>
+</VBox>

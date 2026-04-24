@@ -1,4 +1,4 @@
-package org.huellasanas.services;
+package org.huellasanas.services; // <--- ESTO ES VITAL PARA QUE MAVEN NO TE DÉ ERROR
 
 import org.huellasanas.DAO.Impl.CitasDAO;
 import org.huellasanas.DAO.Impl.VeterinarioDAO;
@@ -13,44 +13,44 @@ public class VeterinarioService {
     private final CitasDAO cDAO = new CitasDAO();
 
     public boolean crearVeterinario(Veterinario v){
-        if (v == null)return false;
+        if (v == null) return false;
         return vDAO.save(v);
     }
-    //Listar
+
     public List<Veterinario> listarVeterinarios(){
         return vDAO.findAll();
     }
-    //Por id
+
     public Optional<Veterinario> buscarVeterinarioPorId(String id){
         return vDAO.findById(id);
     }
-    //Actualizar
+
     public boolean actualizarVeterinario(Veterinario v){
-        if (v == null)return false;
+        if (v == null) return false;
         return vDAO.update(v);
     }
-    //Eliminar
+
     public boolean eliminarVeterinario(String id){
         return vDAO.delete(id);
     }
 
     // Choque de citas
     public boolean choqueCitas(Cita nueva){
-        //Validamos datos
-        if (nueva == null)return false;
+        if (nueva == null) return false;
 
         List<Cita> citas = cDAO.findAll();
         return citas.stream().anyMatch(c -> {
-            //Mismo veterinario
-            if (!c.getVeterinarioId().equals(nueva.getVeterinarioId())){return false;}
-            //Mismo dia
-            if (!c.getFechaHora().toLocalDate().equals(nueva.getFechaHora().toLocalDate())){return false;}
+            // Mismo veterinario
+            if (!c.getVeterinarioId().equals(nueva.getVeterinarioId())) return false;
 
-            //Choque de tiempo 1Hora margen
+            // Mismo dia
+            if (!c.getFechaHora().toLocalDate().equals(nueva.getFechaHora().toLocalDate())) return false;
+
+            // Choque de tiempo 1Hora margen
             long minutos = Math.abs(
                     java.time.Duration.between(c.getFechaHora(), nueva.getFechaHora()).toMinutes()
             );
             return minutos < 60;
-        } );
+        });
     }
 }

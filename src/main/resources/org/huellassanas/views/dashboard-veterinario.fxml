@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="org.huellasanas.ui.controllers.VeterinarioController">
+    <children>
+        <VBox prefWidth="150.0" prefHeight="400.0" spacing="20" style="-fx-background-color: #f4f4f4; -fx-padding: 20;">
+            <Button text="Ver Clientes" onAction="#verClientes" maxWidth="Infinity" />
+            <Button text="Cerrar Sesión" onAction="#cerrarSesion" maxWidth="Infinity" />
+        </VBox>
+        <AnchorPane fx:id="contentPane" layoutX="150.0" prefWidth="450.0" prefHeight="400.0" />
+    </children>
+</AnchorPane>

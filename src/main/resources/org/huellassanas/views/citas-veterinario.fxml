@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.huellasanas.ui.controllers.CitasController"
+            prefHeight="350.0" prefWidth="430.0">
+
+    <children>
+        <Label text="Mis Citas" layoutX="14.0" layoutY="14.0" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+        <TableView fx:id="tablaCitas" layoutX="14.0" layoutY="50.0" prefHeight="280.0" prefWidth="400.0">
+            <columns>
+                <TableColumn fx:id="colFecha" text="Fecha y Hora" prefWidth="150.0" />
+                <TableColumn fx:id="colVeterinario" text="Veterinario" prefWidth="150.0" />
+                <TableColumn fx:id="colEstado" text="Estado" prefWidth="95.0" />
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>
